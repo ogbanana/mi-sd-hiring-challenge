@@ -14,7 +14,7 @@ export function getDate() {
   const date = new Date();
   const day = date.getDay();
   const month = date.getMonth();
-  const year = date.getFullYear()
+  const year = date.getFullYear();
   return month + day + year;
 }
 

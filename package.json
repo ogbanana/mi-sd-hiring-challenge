@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html",
-    "pack": "npm run pack"
+    "pack": "npm pack"
   },
   "devDependencies": {
     "@babel/core": "7.14.0",
