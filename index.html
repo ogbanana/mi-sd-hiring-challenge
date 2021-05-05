@@ -4,11 +4,26 @@
 <head>
   <title>Movable Ink</title>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="A quick and dirty weather application.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./src/style.css">
+  <script src="src/app.js" defer></script>
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <button type="button" id="locate-me">
+      Locate Me
+    </button>
+    <div class="search-container">
+      <h1>Get my local weather</h1>
+      <form id="zipcode-form">
+        <label>Enter your 5 digit zipcode</label>
+        <input type="text" id="zipcode-input" required minlength="5" maxlength="5" placeholder="e.g 10123">
+        <input type="submit" id="submit-button" value="Go" />
+      </form>
+    </div>
+  </div>
 </body>
-<script src="src/app.js"></script>
-
 </html>
