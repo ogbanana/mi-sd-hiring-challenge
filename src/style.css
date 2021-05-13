@@ -1,6 +1,7 @@
 * {
   margin: 0;
   font-color: black;
+  font-family: 'Lexend', sans-serif;
 }
 
 #app {
@@ -35,6 +36,15 @@
   padding: .1rem;
 }
 
+#locate-me-button {
+  background-color: rgb(140, 224, 230);
+  height: 2.5rem;
+  width: 7rem;
+  font-size: 1.1em;
+  border-radius: .5rem;
+  padding: .1rem;
+}
+
 .weather-container {
   width: 100%;
   height: auto;
@@ -60,4 +70,8 @@
   background-color: rgb(131, 202, 204);
   padding: 1rem;
   margin: .2rem;
+}
+
+.loading {
+  font-size: 1rem;
 }

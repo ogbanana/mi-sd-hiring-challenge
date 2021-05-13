@@ -2,7 +2,7 @@
  *
  * @param {number} time - Unix time in seconds returns it in miliseconds
  */
-import {createWeatherElement} from './app.js';
+import {createWeatherElement, errorMessageElement} from './app.js';
 const geoAPI = 'https://se-weather-api.herokuapp.com/api/v1/geo';
 const forecastAPI = 'https://se-weather-api.herokuapp.com/api/v1/forecast';
 
@@ -54,24 +54,30 @@ export async function getGeolocationEndpoint() {
     latitude,
     longitude,
     regionCode
-  } = await fetchGeolocationAPI(input);
-
-  const { daily } = await fetchForecastAPI(latitude, longitude);
-  createWeatherElement(daily, city, regionCode);
+  } = await fetchGeolocationAPI(input);  
+  if (city && latitude && longitude && regionCode) {
+    const { daily } = await fetchForecastAPI(latitude, longitude);
+    if (daily) {
+      createWeatherElement(daily, city, regionCode);
+    }
+  } else {
+    errorMessageElement();
+  }
 }
 
-// async function success(position) {
-//     const latitude  = position.coords.latitude;
-//     const longitude = position.coords.longitude;
-//     console.log(latitude, longitude);
-//     const { daily } = await fetchForecastAPI(latitude, longitude);
-//     console.log(daily)
-//   }
-//
-// export function getMylocation() {
-//   if (!navigator.geolocation) {
-//     alert('Unfortunately, we cannot find you with this browser.');
-//   } else {
-//     navigator.geolocation.getCurrentPosition(success);
-//   }
-// }
+async function success(position) {
+    const latitude  = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const {daily}  = await fetchForecastAPI(latitude, longitude);
+    if (daily) {
+      createWeatherElement(daily);
+    }
+  }
+
+export function getMyWeather() {
+  if (!navigator.geolocation) {
+    alert('Unfortunately, we cannot find you with this browser.');
+  } else {
+    navigator.geolocation.getCurrentPosition(success);
+  }
+}

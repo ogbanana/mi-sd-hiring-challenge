@@ -1,14 +1,32 @@
-import { getGeolocationEndpoint, getDay } from './utils';
+import { getGeolocationEndpoint, getDay, getMyWeather } from './utils';
 
+const app = document.getElementById('app');
+const input = document.getElementById('zipcode-input');
 const form = document.getElementById('zipcode-form');
+const locateMeButton = document.getElementById('locate-me-button');
+const loading = document.createElement('p');
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   getGeolocationEndpoint();
+  if (document.getElementsByClassName('weather-container')[0]) {
+    document.getElementsByClassName('weather-container')[0].remove();
+  }
+  input.value = '';
 });
 
-const app = document.getElementById('app');
+locateMeButton.addEventListener('click', () => {
+  if (document.getElementsByClassName('weather-container')[0]) {
+    document.getElementsByClassName('weather-container')[0].remove();
+  }
+  loading.className = 'loading';
+  loading.innerText = 'Loading...';
+  app.appendChild(loading);
+  getMyWeather();
+});
 
-export function createWeatherElement (daily, city, regionCode) {
+export function createWeatherElement (daily, city = 'Your City', regionCode = 'Your State') {
+
   const weatherContainer = document.createElement('div');
   weatherContainer.className = 'weather-container';
   app.appendChild(weatherContainer);
@@ -54,4 +72,12 @@ export function createWeatherElement (daily, city, regionCode) {
 
     tempContainer.innerHTML = forecastIcon.outerHTML + weatherDescription.outerHTML + highTemp.outerHTML + lowTemp.outerHTML;
   });
+
+  if (document.getElementsByClassName('weather-container')[0]) {
+    loading.remove();
+  }
+}
+
+export function errorMessageElement () {
+  alert('We are unable to find that zipcode. Please try a different zipcode.');
 }
