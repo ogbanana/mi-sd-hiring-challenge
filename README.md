@@ -1,52 +1,15 @@
-# Front End Developer, Client Solutions - Hiring Challenge
+# Hello Movable Ink Team!
 
-Movable Ink is a software company that provides marketers with technology to create personalized experiences. This often means we are reaching out to different API's, applying business logic to the data, and generating an image in real-time.
+For this take home I tried to write reusable functions in the utils.js file and keep the html related code in the app.js file.
 
-In this code challenge, you will be in charge of creating a view that renders the forecast for a specific location. Please, use plain HTML, CSS, and JS.
+## Some of the decisions I had to make are listed below:
+1. Should I use the browser navigator geolocation api? -- Could be a cool feature but will need to check if the user's browser supports it.
+2. Should the zipcode input be tested before submitting? -- I could quickly do that with the required prop, but an extra function could be written to check if the input is a valid zipcode before calling the fetchGeolocation API.
+3. Should I be redirected to a new page with results after the user submits their zipcode? -- Could be good to implement if there will be more data to display. For now I will generate new elements on the same page.
 
-**Don't spend more than two hours on this.** The goal of this challenge is to get a sense for how you reason about a problem and structure your code _not_ if you can finish it.
+At the very end, I wanted to see if I could implement no.1, the navigator geolocation API, and reuse the fetchGeolocationAPI and fetchForecastAPI to perform the same functionality as entering the zipcode. I was only able to get the longitude and latitude. Additional research will need to be done on my end to utilize the geolocation api methods.
 
-## Challenge details
+Thanks for putting this together, it was a lot of fun!
 
-Requirements for the challenge:
-
-1. Create a project that consume the **geolocation endpoint**.
-1. Use the data from the geolocation endpoint to make a second call to the **forecast endpoint**.
-1. Use the data from both endpoints to generate the creative found [here.](/img/creative_mock_up.gif)
-1. Your code should be as maintainable and extensible as possible.
-1. Please timebox this exercise to 2 hours.
-
-## Get Started
-
-- Run `npm run start` to start your local dev environment
-- Run `npm run pack` to package your code and send to us
-
-## Geolocation endpoint
-
-```sh
-https://se-weather-api.herokuapp.com/api/v1/geo
-```
-
-This is the endpoint for retrieving the geo data associated with a given zip code. This endpoint should be called with `GET` and accepts a single query string parameter (`zip_code`).
-
-Example:
-
-```sh
-https://se-weather-api.herokuapp.com/api/v1/geo?zip_code=90210
-https://se-weather-api.herokuapp.com/api/v1/geo?zip_code=10019
-```
-
-## Forecast endpoint
-
-```
-https://se-weather-api.herokuapp.com/api/v1/forecast
-```
-
-This is the endpoint for retrieving the weather forecast data associated with at a lat/lon. This endpoint should be called with `GET` and accepts three query string parameters (`latitude`, `longitude`, `date`).
-
-Example:
-
-```
-https://se-weather-api.herokuapp.com/api/v1/forecast?latitude=34.09&longitude=-104.2&date=01/24/2020
-https://se-weather-api.herokuapp.com/api/v1/forecast?latitude=32.05&longitude=-94.1&date=01/24/2020
-```
+Thank you for your time!
+Amy 
